@@ -1,10 +1,12 @@
-from marshmallow import Schema, fields
+
+from marshmallow_sqlalchemy import ModelSchema
+from .models import User
+
 
 
 '''class UserProfileSchema(Schema):
     class Meta :
         fields=()'''
-
-class UserSchema(Schema):
+class UserSchema(ModelSchema):
     class Meta :
-        fields=("id","first_name","last_name","email","password","user_type","created","updated","last_login")
+        model = User
