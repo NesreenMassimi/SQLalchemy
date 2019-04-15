@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from sqlalchemy import create_engine
 from .models import User, UserProfile
 from .serializers import *
+from passlib.hash import bcrypt
+
 # Create your views here.
 
 
@@ -45,7 +47,7 @@ def createUser(request):
     user.email = request.data.get('email')
     user.first_name = request.data.get('first_name')
     user.last_name = request.data.get('last_name')
-    user.password = request.data.get('password')
+    user.password = bcrypt.encrypt(request.data.get('password'))
     user.user_type = request.data.get('user_type')
     user.created = date.today()
     user.updated = date.today()
