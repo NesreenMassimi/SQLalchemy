@@ -1,7 +1,7 @@
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey,DATE,DATETIME,Float
 from sqlalchemy.ext.declarative import declarative_base
 import pymysql
-import sqlalchemy, sqlalchemy.orm
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy import create_engine
 pymysql.install_as_MySQLdb()
 
@@ -41,7 +41,8 @@ class User(Base):
     last_login=Column(DATETIME)
     created = Column(DATE)
     updated = Column(DATE)
-    #profile = relationship("UserProfile", uselist=False, back_populates="User")
+    profile = relationship("UserProfile", uselist=False, backref=backref("user"))
+
 
 
 class UserEducation(Base):
@@ -65,6 +66,7 @@ class UserProfile(Base):
     users = Column(Integer,ForeignKey("user.id"),nullable=False)
     created = Column(DATE)
     updated = Column(DATE)
+
 
 
 Base.metadata.create_all(engine)

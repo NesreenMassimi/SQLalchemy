@@ -71,12 +71,12 @@ def createUser(request):
 
 def listUsers(request):
     result =[]
-    data = session.query(User).all()
-    for user in data :
-        schema = UserSchema()
-        result.append(schema.dump(user))
+    users = session.query(User).all()
+    user_schema = UserSchema()
+    profile_schema = UserProfileSchema()
+    for user in users :
+        result.append(user_schema.dump(user).data)
     return Response(result, status=status.HTTP_200_OK)
-
 
 def listProfs(request):
 
