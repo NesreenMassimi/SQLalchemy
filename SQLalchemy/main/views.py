@@ -9,7 +9,6 @@ from sqlalchemy import create_engine
 from .models import User, UserProfile
 from .serializers import *
 from passlib.hash import bcrypt
-
 # Create your views here.
 
 
@@ -42,7 +41,6 @@ def createProfile(data,id):
 @api_view(['POST'])
 def createUser(request):
     profile_data = request.data.get('profile')
-    print(profile_data)
     user = User()
     user.email = request.data.get('email')
     user.first_name = request.data.get('first_name')
@@ -83,3 +81,15 @@ def listUsers(request):
 def listProfs(request):
 
     data = session.query(UserProfile).all()
+
+@api_view(['POST'])
+def login (request):
+    password = request.data.get('password')
+    email = request.data.get('email')
+    user = session.query(User).filter_by(email=email).one()
+    if (user.email == email ):
+
+        if bcrypt.verify(password, user.password):
+            return Response(status=status.HTTP_200_OK)
+
+    return Response(status=status.HTTP_418_WRONG_CREDENTIALS)
