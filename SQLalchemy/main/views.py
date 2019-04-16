@@ -81,20 +81,50 @@ def listUsers(request):
         result.append(user_schema.dump(user).data)
     return Response(result, status=status.HTTP_200_OK)
 
+
+
+def update_user(user,data):
+
+    if data.get('first_name') is not None :
+        user.first_name = data.get('first_name')
+
+    if data.get('last_name') is not None :
+        user.last_name = data.get('last_name')
+
+    if data.get('user_type') is not None :
+        user.user_type = data.get('user_type')
+
+    if data.get('email') is not None :
+        user.email = data.get('email')
+
+    if data.get('password') is not None :
+        user.password = bcrypt(data.get('password'))
+    user.updated = date.today()
+
 @api_view(['PUT'])
 def updateUser(request,pk):
-    user = session.query(User).filter_by(id = pk).one()
-    update_schema = UserUpdateSchema(request.data)
-    data = update_schema.dumps(user)
-    return Response(data,status.HTTP_200_OK)
+    user = session.query(User).filter_by(id =pk).one()
+    created = user.created
+    if user is not None :
+        data = request.data
+        update_user(user, data)
+        user.created =created
+        user.id = pk
+        user_schema = UserSchema()
+        result = user_schema.dump(user).data
+        session.add(user)
+        session.commit()
+        return Response(result, status.HTTP_200_OK)
+
+    return Response (status.HTTP_404_NOT_FOUND)
 
 @api_view(['POST'])
 def login (request):
     password = request.data.get('password')
     email = request.data.get('email')
     user = session.query(User).filter_by(email=email).one()
-    if (user.email == email ):
 
+    if user.email == email :
         if bcrypt.verify(password, user.password):
             user.last_login = now()
             payload = {
