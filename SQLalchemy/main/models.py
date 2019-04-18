@@ -4,12 +4,8 @@ import pymysql
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import create_engine
 pymysql.install_as_MySQLdb()
-
-
 engine = create_engine("mysql+pymysql://root:16001700@localhost/test")
 Base = declarative_base()
-#Session = sqlalchemy.orm.sessionmaker(bind=engine)
-#session = Session()
 
 
 class Post (Base):
@@ -30,7 +26,9 @@ class Speciality(Base):
     created = Column(DATE)
     updated=Column(DATE)
 
-class User(Base):
+
+class user(Base):
+
     __tablename__ = 'user'
     id=Column(Integer,primary_key=True,autoincrement=True)
     first_name = Column(String(45))
@@ -42,7 +40,6 @@ class User(Base):
     created = Column(DATE)
     updated = Column(DATE)
     profile = relationship("UserProfile", uselist=False, backref=backref("user"))
-
 
 
 class UserEducation(Base):
