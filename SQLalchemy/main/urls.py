@@ -22,8 +22,15 @@ education = views.EducationView.as_view({
 
 })
 
+profile_details = views.ProfileView.as_view({
+
+    'put':'update'
+
+})
+
 urlpatterns = [ path('users', views.listUsers,name ='getUser'),
                 path('users/',views.createUser,name= "createuser"),
+                path('users/<int:pk>/profile',profile_details,name='update_profile'),
                 path('login/',views.log_in,name="login user"),
                 path('logout/', views.log_out, name="logout user"),
                 path('users/<int:pk>/',details_user,name="delete,update user"),

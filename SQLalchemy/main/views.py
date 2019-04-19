@@ -113,6 +113,42 @@ def is_logedin(request):
     return False
 
 
+
+class ProfileView(viewsets.ModelViewSet):
+
+    def update(self, request, *args, **kwargs):
+        try :
+            account = session.query(user).filter_by(id=kwargs['pk']).one()
+            profile = session.query(UserProfile).filter_by(users=account.id).one()
+            create = profile.created
+            prof = profile.id
+
+            if request.data.get('license_number') is not None :
+                profile.license_number = request.data.get('license_number')
+            if request.data.get('about') is not None :
+                profile.about = request.data.get('about')
+            if request.data.get('weight') is not  None :
+                profile.weight = request.data.get('weight')
+            if request.data.get('height') is not None :
+                profile.height = request.data.get('height')
+
+            profile.created =create
+            profile.id =prof
+            profile.updated = date.today()
+            try :
+                session.add(profile)
+                session.commit()
+            except :
+                session.rollback()
+                raise
+            profile_schema = UserProfileSchema()
+            data = profile_schema.dump(profile).data
+            return Response(data=data,status=status.HTTP_200_OK)
+        except NoResultFound :
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+
 class Userview(viewsets.ModelViewSet):
 
     def update_user(self, user, data):
@@ -178,8 +214,6 @@ class Userview(viewsets.ModelViewSet):
             return Response(status.HTTP_404_NOT_FOUND)
 
 
-
-
 class EducationView(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
@@ -224,7 +258,7 @@ class EducationView(viewsets.ModelViewSet):
                     session.add(edu)
                     session.commit()
                     edu_schema = UserEducationSchema()
-                    data = edu_schema.dumps(edu).data
+                    data = edu_schema.dump(edu).data
                     return Response(data=data, status=status.HTTP_200_OK)
                 return Response(status.HTTP_401_UNAUTHORIZED)
 
