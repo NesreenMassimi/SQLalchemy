@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, delete
 from sqlalchemy.orm.exc import NoResultFound
 
 from .serializers import *
@@ -205,6 +205,20 @@ class EducationView(viewsets.ModelViewSet):
                 return Response(status.HTTP_401_UNAUTHORIZED)
 
         except NoResultFound :
+            return Response(status.HTTP_404_NOT_FOUND)
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+            edu = session.query(UserEducation).filter_by(id=kwargs['pk2']).one()
+            if is_logedin(request):
+                if request.session['user_id'] == kwargs['pk']:
+                    session.delete(edu)
+                    session.commit()
+                    return Response(status.HTTP_200_OK)
+
+                return Response(status.HTTP_401_UNAUTHORIZED)
+
+        except NoResultFound:
             return Response(status.HTTP_404_NOT_FOUND)
 
 

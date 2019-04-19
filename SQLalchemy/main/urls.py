@@ -13,7 +13,8 @@ update_user = views.Updateview.as_view({
 education = views.EducationView.as_view({
 
     'post':'create',
-    'put':'update'
+    'put':'update',
+    'delete':'destroy'
 
 
 
