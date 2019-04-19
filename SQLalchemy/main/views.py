@@ -151,6 +151,15 @@ class ProfileView(viewsets.ModelViewSet):
 
 class Userview(viewsets.ModelViewSet):
 
+    def retrieve(self, request, *args, **kwargs):
+       try :
+           account = session.query(user).filter_by(id=kwargs['pk']).one()
+           user_schema = UserSchema()
+           data = user_schema.dump(account).data
+           return Response(data=data, status=status.HTTP_200_OK)
+       except NoResultFound:
+           return Response(status.HTTP_404_NOT_FOUND)
+
     def update_user(self, user, data):
 
         if data.get('first_name') is not None:

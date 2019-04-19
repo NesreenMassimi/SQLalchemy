@@ -5,7 +5,8 @@ from . import views
 details_user = views.Userview.as_view({
 
     'put':'update',
-    'delete':'destroy'
+    'delete':'destroy',
+    'get' :'retrieve'
 
 
 })
