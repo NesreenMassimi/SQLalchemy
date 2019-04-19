@@ -40,6 +40,8 @@ class user(Base):
     created = Column(DATE)
     updated = Column(DATE)
     profile = relationship("UserProfile", uselist=False, backref=backref("user"))
+    educations= relationship('UserEducation', back_populates="user_id")
+
 
 
 class UserEducation(Base):
@@ -51,6 +53,7 @@ class UserEducation(Base):
     user = Column(Integer,ForeignKey("user.id"),nullable=False)
     created = Column(DATE)
     updated = Column(DATE)
+    user_id = relationship("user", uselist=False, back_populates="educations")
 
 
 class UserProfile(Base):

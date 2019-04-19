@@ -6,10 +6,13 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from sqlalchemy import create_engine
+from sqlalchemy.orm.exc import NoResultFound
+
 from .serializers import *
 from passlib.hash import bcrypt
 from rest_framework import viewsets
 from main.models import user
+from django.http import Http404
 
 # Create your views here.
 
@@ -19,11 +22,11 @@ session = Session()
 
 
 @api_view(['POST'])
-def log_in (request):
+def log_in(request):
     password = request.data.get('password')
     email = request.data.get('email')
     account = session.query(user).filter_by(email=email).one()
-    if account.email == email :
+    if account.email == email:
         if bcrypt.verify(password, account.password):
             request.session['user_id'] = account.id
             account.last_login = now()
@@ -32,7 +35,7 @@ def log_in (request):
 
 
 @api_view(['GET'])
-def log_out (request):
+def log_out(request):
     try:
         del request.session['user_id']
     except KeyError:
@@ -40,21 +43,19 @@ def log_out (request):
     return Response(status.HTTP_200_OK)
 
 
-
-
-def createProfile(data,id):
+def createProfile(data, id):
     profile = UserProfile()
-    profile.users =id
+    profile.users = id
     profile.updated = date.today()
     profile.created = date.today()
     profile.license_number = data['license_number']
     profile.about = data['about']
     profile.weight = data['weight']
-    profile.height=data['height']
+    profile.height = data['height']
     try:
-      session.add(profile)
-      session.new
-      session.commit()
+        session.add(profile)
+        session.new
+        session.commit()
 
     except:
         session.rollback()
@@ -62,6 +63,7 @@ def createProfile(data,id):
 
     finally:
         session.close()
+
 
 @renderer_classes((JSONRenderer,))
 @api_view(['POST'])
@@ -81,7 +83,7 @@ def createUser(request):
         session.add(account)
         session.new
         session.commit()
-        profile=createProfile(profile_data, account.id)
+        profile = createProfile(profile_data, account.id)
 
     except:
         session.rollback()
@@ -92,11 +94,11 @@ def createUser(request):
 
     return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 @renderer_classes((JSONRenderer,))
 @api_view(['GET'])
-
 def listUsers(request):
-    result =[]
+    result = []
     accounts = session.query(user).all()
     user_schema = UserSchema()
     profile_schema = UserProfileSchema()
@@ -104,15 +106,16 @@ def listUsers(request):
         result.append(user_schema.dump(us).data)
     return Response(result, status=status.HTTP_200_OK)
 
+
 def is_logedin(request):
     if 'user_id' in request.session:
-            return True
+        return True
     return False
 
-class Updateview(viewsets.ModelViewSet) :
 
+class Updateview(viewsets.ModelViewSet):
 
-    def update_user(self,user, data):
+    def update_user(self, user, data):
 
         if data.get('first_name') is not None:
             user.first_name = data.get('first_name')
@@ -130,25 +133,86 @@ class Updateview(viewsets.ModelViewSet) :
             user.password = bcrypt(data.get('password'))
         user.updated = date.today()
 
-    def update(self, request,*args, **kwargs):
+    def update(self, request, *args, **kwargs):
+        try:
             account = session.query(user).filter_by(id=kwargs['pk']).one()
             created = account.created
             if account is not None:
                 if is_logedin(request):
                     print(request.session['user_id'])
                     data = request.data
-                    if(request.session['user_id']== account.id):
-                      self.update_user(account, data)
-                      account.created = created
-                      account.id = kwargs['pk']
-                      user_schema = UserSchema()
-                      result = user_schema.dump(account).data
-                      session.add(account)
-                      session.commit()
-                      return Response(result, status.HTTP_200_OK)
+                    if (request.session['user_id'] == account.id):
+                        self.update_user(account, data)
+                        account.created = created
+                        account.id = kwargs['pk']
+                        user_schema = UserSchema()
+                        result = user_schema.dump(account).data
+                        session.add(account)
+                        session.commit()
+                        return Response(result, status.HTTP_200_OK)
                     return Response(status.HTTP_401_UNAUTHORIZED)
 
                 return Response("details : Login Required ")
-
+        except NoResultFound :
             return Response(status.HTTP_404_NOT_FOUND)
+
+class EducationView(viewsets.ModelViewSet):
+
+    def create(self, request, *args, **kwargs):
+        if is_logedin(request):
+            if request.session['user_id'] == kwargs['pk']:
+                edu = UserEducation()
+                edu.institution_name = request.data.get('institution_name')
+                edu.start_date = request.data.get('start_date')
+                edu.end_date = request.data.get('end_date')
+                edu.created = date.today()
+                edu.updated = date.today()
+                edu.user = kwargs['pk']
+                try:
+                    session.add(edu)
+                    session.new
+                    session.commit()
+                except:
+                    session.rollback()
+                    raise
+
+                finally:
+                    session.close()
+
+                return Response(status.HTTP_204_NO_CONTENT)
+
+            return Response(status.HTTP_401_UNAUTHORIZED)
+
+    def update(self, request, *args, **kwargs):
+        try :
+            edu = session.query(UserEducation).filter_by(id=kwargs['pk2']).one()
+            if is_logedin(request):
+                if request.session['user_id'] == kwargs['pk']:
+                    if request.data.get('institution_name') is not None:
+                        edu.institution_name = request.data.get('institution_name')
+                    if request.data.get('start_date') is not None:
+                        edu.start_date = request.data.get('start_date')
+                    if request.data.get('end_date') is not None:
+                        edu.end_date = request.data.get('end_date')
+
+                    edu.id = kwargs['pk2']
+                    edu.updated = date.today()
+                    session.add(edu)
+                    session.commit()
+                    edu_schema = UserEducationSchema()
+                    data = edu_schema.dumps(edu).data
+                    return Response(data=data, status=status.HTTP_200_OK)
+                return Response(status.HTTP_401_UNAUTHORIZED)
+
+        except NoResultFound :
+            return Response(status.HTTP_404_NOT_FOUND)
+
+
+
+
+
+
+
+
+
 

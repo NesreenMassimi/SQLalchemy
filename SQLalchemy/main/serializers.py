@@ -8,6 +8,12 @@ class TokenSchema(ModelSchema):
         model = user
         fields=('token',)
 
+
+class UserEducationSchema(ModelSchema):
+    class Meta:
+        model = UserEducation
+
+
 class UserProfileSchema(ModelSchema):
     class Meta :
         model = UserProfile
@@ -15,6 +21,7 @@ class UserProfileSchema(ModelSchema):
 
 class UserSchema(ModelSchema):
     profile = fields.Nested(UserProfileSchema())
+    educations = fields.Nested(UserEducationSchema,many=True)
     class Meta :
         model = user
 
@@ -22,5 +29,5 @@ class UserUpdateSchema(ModelSchema):
 
     class Meta :
         model = user
-        exclude = ("id", "created")
+
 
