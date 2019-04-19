@@ -113,7 +113,7 @@ def is_logedin(request):
     return False
 
 
-class Updateview(viewsets.ModelViewSet):
+class Userview(viewsets.ModelViewSet):
 
     def update_user(self, user, data):
 
@@ -155,6 +155,30 @@ class Updateview(viewsets.ModelViewSet):
                 return Response("details : Login Required ")
         except NoResultFound :
             return Response(status.HTTP_404_NOT_FOUND)
+
+    def destroy(self, request, *args, **kwargs):
+        try:
+            account = session.query(user).filter_by(id=kwargs['pk']).one()
+            profile = session.query(UserProfile).filter_by(users=account.id).one()
+            if is_logedin(request):
+                if request.session['user_id'] == kwargs['pk']:
+                    try:
+                        session.delete(profile)
+                        session.delete(account)
+                        session.commit()
+                    except:
+                        session.rollback()
+                        raise
+
+                    return Response(status.HTTP_200_OK)
+
+                return Response(status.HTTP_401_UNAUTHORIZED)
+
+        except NoResultFound:
+            return Response(status.HTTP_404_NOT_FOUND)
+
+
+
 
 class EducationView(viewsets.ModelViewSet):
 
