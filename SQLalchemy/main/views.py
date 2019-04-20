@@ -25,14 +25,16 @@ session = Session()
 def log_in(request):
     password = request.data.get('password')
     email = request.data.get('email')
-    account = session.query(user).filter_by(email=email).one()
-    if account.email == email:
-        if bcrypt.verify(password, account.password):
-            request.session['user_id'] = account.id
-            account.last_login = now()
-            return Response(status=status.HTTP_200_OK)
-    return Response(status=status.HTTP_418_WRONG_CREDENTIALS)
-
+    try :
+        account = session.query(user).filter_by(email=email).one()
+        if account.email == email:
+            if bcrypt.verify(password, account.password):
+                request.session['user_id'] = account.id
+                account.last_login = now()
+                return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_418_WRONG_CREDENTIALS)
+    except NoResultFound :
+        return Response("details : this email doesnt belong to any account ",status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def log_out(request):
@@ -119,31 +121,37 @@ class ProfileView(viewsets.ModelViewSet):
     def update(self, request, *args, **kwargs):
         try :
             account = session.query(user).filter_by(id=kwargs['pk']).one()
-            profile = session.query(UserProfile).filter_by(users=account.id).one()
-            create = profile.created
-            prof = profile.id
+            if is_logedin(request):
+                if request.session['user_id'] == account.id :
+                    profile = session.query(UserProfile).filter_by(users=account.id).one()
+                    create = profile.created
+                    prof = profile.id
 
-            if request.data.get('license_number') is not None :
-                profile.license_number = request.data.get('license_number')
-            if request.data.get('about') is not None :
-                profile.about = request.data.get('about')
-            if request.data.get('weight') is not  None :
-                profile.weight = request.data.get('weight')
-            if request.data.get('height') is not None :
-                profile.height = request.data.get('height')
+                    if request.data.get('license_number') is not None:
+                        profile.license_number = request.data.get('license_number')
+                    if request.data.get('about') is not None:
+                        profile.about = request.data.get('about')
+                    if request.data.get('weight') is not None:
+                        profile.weight = request.data.get('weight')
+                    if request.data.get('height') is not None:
+                        profile.height = request.data.get('height')
 
-            profile.created =create
-            profile.id =prof
-            profile.updated = date.today()
-            try :
-                session.add(profile)
-                session.commit()
-            except :
-                session.rollback()
-                raise
-            profile_schema = UserProfileSchema()
-            data = profile_schema.dump(profile).data
-            return Response(data=data,status=status.HTTP_200_OK)
+                    profile.created = create
+                    profile.id = prof
+                    profile.updated = date.today()
+                    try:
+                        session.add(profile)
+                        session.commit()
+                    except:
+                        session.rollback()
+                        raise
+                    profile_schema = UserProfileSchema()
+                    data = profile_schema.dump(profile).data
+                    return Response(data=data, status=status.HTTP_200_OK)
+                return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response("details : Login Required ",status.HTTP_401_UNAUTHORIZED)
+
+
         except NoResultFound :
             return Response(status=status.HTTP_404_NOT_FOUND)
 
