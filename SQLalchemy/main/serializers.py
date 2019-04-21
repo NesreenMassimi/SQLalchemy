@@ -25,6 +25,8 @@ class UserSchema(ModelSchema):
     class Meta :
         model = user
 
+
+
 class UserUpdateSchema(ModelSchema):
 
     class Meta :

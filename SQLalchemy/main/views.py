@@ -205,7 +205,7 @@ class Userview(viewsets.ModelViewSet):
                         return Response(result, status.HTTP_200_OK)
                     return Response(status.HTTP_401_UNAUTHORIZED)
 
-                return Response("details : Login Required ")
+                return Response("details : Login Required ",status.HTTP_401_UNAUTHORIZED)
         except NoResultFound :
             return Response(status.HTTP_404_NOT_FOUND)
 
@@ -226,6 +226,7 @@ class Userview(viewsets.ModelViewSet):
                     return Response(status.HTTP_200_OK)
 
                 return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response("details : Login Required ", status.HTTP_401_UNAUTHORIZED)
 
         except NoResultFound:
             return Response(status.HTTP_404_NOT_FOUND)
@@ -257,6 +258,7 @@ class EducationView(viewsets.ModelViewSet):
                 return Response(status.HTTP_204_NO_CONTENT)
 
             return Response(status.HTTP_401_UNAUTHORIZED)
+        return Response("details : Login Required ", status.HTTP_401_UNAUTHORIZED)
 
     def update(self, request, *args, **kwargs):
         try :
@@ -278,6 +280,7 @@ class EducationView(viewsets.ModelViewSet):
                     data = edu_schema.dump(edu).data
                     return Response(data=data, status=status.HTTP_200_OK)
                 return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response("details : Login Required ", status.HTTP_401_UNAUTHORIZED)
 
         except NoResultFound :
             return Response(status.HTTP_404_NOT_FOUND)
@@ -292,6 +295,7 @@ class EducationView(viewsets.ModelViewSet):
                     return Response(status.HTTP_200_OK)
 
                 return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response("details : Login Required ", status.HTTP_401_UNAUTHORIZED)
 
         except NoResultFound:
             return Response(status.HTTP_404_NOT_FOUND)
