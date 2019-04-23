@@ -1,1 +1,1 @@
-web: gunicorn SQLalchemy.SQLalchemy.wsgi --log-file -
+web: gunicorn SQLalchemy.wsgi --log-file -
