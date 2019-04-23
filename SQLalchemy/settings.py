@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-import dj_database_url
 import os
 
 import pymysql
@@ -93,21 +92,21 @@ WSGI_APPLICATION = 'SQLalchemy.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-''''
+
 DATABASES = {
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'test',
         'USER': 'root',
         'PASSWORD': '16001700',
         'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'PORT': '3306',
+        
 
     }
-}'''
-prod_db  =  dj_database_url.config(conn_max_age=500)
+}
 
-DATABASES['default'].update(prod_db)
 
 
 
