@@ -12,10 +12,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+import django_heroku
+
 import pymysql
 pymysql.install_as_MySQLdb()
 
-
+django_heroku.settings(locals())
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,8 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(r'Untitled/Users/mac/python-virtual-enviroments/secretKey.txt') as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = 'ir&n%ocl=td87u5@c&!k$403vpu9pmgom)hx)_f^%319fd-zg*'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
