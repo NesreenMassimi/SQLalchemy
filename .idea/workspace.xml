@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a162eb2-8608-4937-8b14-6482c900a238" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SQLalchemy/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/SQLalchemy/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/SQLalchemy/runtime.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/SQLalchemy/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/SQLalchemy/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/SQLalchemy/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/main/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/requierments.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requierments.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLalchemy/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLalchemy/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SQLalchemy/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
+            <state relative-caret-position="314">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="e#311#320#0" expanded="true" />
               </folding>
@@ -63,7 +47,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="106" />
     <option name="y" value="23" />
     <option name="width" value="1174" />
@@ -74,6 +58,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -95,10 +80,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -175,8 +160,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/SQLalchemy/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
+        <state relative-caret-position="314">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="e#311#320#0" expanded="true" />
           </folding>
