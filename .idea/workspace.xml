@@ -2,8 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a162eb2-8608-4937-8b14-6482c900a238" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLalchemy/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLalchemy/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/HISTORY.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/INSTALL.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MANIFEST.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/_exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/_mysql.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/connections.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/constants/CLIENT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/constants/CR.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/constants/ER.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/constants/FIELD_TYPE.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/constants/FLAG.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/constants/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/converters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/cursors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/MySQLdb/times.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/ci/test_mysql.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/FAQ.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/MySQLdb.constants.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/MySQLdb.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/_exceptions.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/_mysql.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/conf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/index.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/make.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/modules.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/doc/user_guide.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/permission.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/main/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/metadata.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/setup_common.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/setup_posix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/setup_windows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/site.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/capabilities.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/configdb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/dbapi20.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/default.cnf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/test_MySQLdb_capabilities.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/test_MySQLdb_dbapi20.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/test_MySQLdb_nonstandard.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/test_MySQLdb_times.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/test__mysql.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/test_cursor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-python-master/tests/travis.cnf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,13 +69,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLalchemy/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
+            <state relative-caret-position="720">
               <caret line="48" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="e#311#320#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#95#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/tests.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -47,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="106" />
     <option name="y" value="23" />
     <option name="width" value="1174" />
@@ -136,9 +238,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="106" y="23" width="1174" height="709" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24978317" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24978317" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -160,10 +261,46 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/SQLalchemy/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
+        <state relative-caret-position="720">
           <caret line="48" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="e#311#320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
