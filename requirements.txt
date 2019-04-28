@@ -19,9 +19,9 @@ protobuf==3.7.0
 pycparser==2.19
 Pygments==2.3.1
 PyJWT==1.7.1
-PyMySQL==0.9.3
 pystan==2.19.0.0
 pytz==2018.9
 rules==2.0.1
 six==1.12.0
 SQLAlchemy==1.3.2
+Mysql client == 1.4.2
